@@ -1,0 +1,18 @@
+.centralizer {
+  display: flex;
+  max-width: 1200px;
+  justify-content: space-between;
+  align-items: center;
+
+  height: inherit;
+  margin: auto;
+}
+
+.gapper-header {
+  display: flex;
+  gap: 10px;
+}
+
+.gapper-header a{
+  color: black;
+}
