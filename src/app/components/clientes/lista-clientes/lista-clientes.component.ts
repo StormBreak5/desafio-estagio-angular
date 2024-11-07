@@ -24,8 +24,9 @@ export class ListaClientesComponent implements OnInit {
 
   carregaClientes(): void {
     this.clienteService.getClientes().subscribe(clientes => {
-      this.clientesPF = clientes.filter(c => c.tipoPessoa === TipoPessoa.FISICA);
-      this.clientesPJ = clientes.filter(c => c.tipoPessoa === TipoPessoa.JURIDICA);
+      const clienteTratado = clientes.content;
+      this.clientesPF = clienteTratado.filter(c => c.tipoPessoa === TipoPessoa.FISICA);
+      this.clientesPJ = clienteTratado.filter(c => c.tipoPessoa === TipoPessoa.JURIDICA);
     })
   }
 

@@ -4,6 +4,7 @@ import {ActivatedRoute} from "@angular/router";
 import {ClientService} from "../../../services/client.service";
 import {MatDialog} from "@angular/material/dialog";
 import {Endereco} from "../../../models/endereco";
+import {CriaEnderecoComponent} from "../../enderecos/cria-endereco/cria-endereco.component";
 
 @Component({
   selector: 'app-detalhes-cliente',
@@ -30,9 +31,37 @@ export class DetalhesClienteComponent implements OnInit {
     })
   }
 
-  adicionaEndereco(): void {}
+  adicionaEndereco(): void {
+    const dialogRef = this.dialog.open(CriaEnderecoComponent, {
+      width: '600px',
+      data: {}
+    });
 
-  editaEndereco(idEndereco: Endereco): void {}
+    dialogRef.afterClosed().subscribe(result => {
+      if(result) {
+        this.clienteService.adicionaEndereco(this.cliente.id!, result).subscribe(() => {
+          this.carregaCliente(this.cliente.id!);
+        });
+      }
+    });
+  }
+
+  editaEndereco(endereco: Endereco): void {
+    const dialogRef = this.dialog.open(CriaEnderecoComponent, {
+      width: '600px',
+      data: {
+        endereco
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if(result) {
+        this.clienteService.atualizaEndereco(this.cliente.id!, {...result, id: endereco.id}).subscribe(() => {
+          this.carregaCliente(this.cliente.id!);
+        });
+      }
+    });
+  }
 
   deletarEndereco(endereco: Endereco): void {
     if(confirm('Tem certeza que deseja excluir este endereço?')) {
@@ -41,5 +70,4 @@ export class DetalhesClienteComponent implements OnInit {
       })
     }
   }
-
 }

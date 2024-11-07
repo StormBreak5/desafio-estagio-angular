@@ -8,7 +8,7 @@ import { ListaClientesComponent } from './components/clientes/lista-clientes/lis
 import {MatTableModule} from "@angular/material/table";
 import {MatButtonModule} from "@angular/material/button";
 import {MatIconModule} from "@angular/material/icon";
-import {RouterLink} from "@angular/router";
+import {RouterLink, RouterModule, RouterOutlet, Routes} from "@angular/router";
 import { DetalhesClienteComponent } from './components/clientes/detalhes-cliente/detalhes-cliente.component';
 import {MatCardModule} from "@angular/material/card";
 import {MatListModule} from "@angular/material/list";
@@ -17,6 +17,16 @@ import {MatDialogModule} from "@angular/material/dialog";
 import {ReactiveFormsModule} from "@angular/forms";
 import {MatInputModule} from "@angular/material/input";
 import {MatCheckboxModule} from "@angular/material/checkbox";
+import {MatSelectModule} from "@angular/material/select";
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import {HttpClientModule} from "@angular/common/http";
+
+const routes: Routes = [
+  {path: '', redirectTo: '/clientes', pathMatch: 'full'},
+  {path: 'clientes', component: ListaClientesComponent},
+  {path: 'clientes/novo', component: CriarClienteComponent},
+  {path: 'clientes/:id', component: DetalhesClienteComponent}
+]
 
 @NgModule({
   declarations: [
@@ -38,7 +48,12 @@ import {MatCheckboxModule} from "@angular/material/checkbox";
     MatDialogModule,
     ReactiveFormsModule,
     MatInputModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatSelectModule,
+    RouterOutlet,
+    MatProgressSpinnerModule,
+    RouterModule.forRoot(routes),
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

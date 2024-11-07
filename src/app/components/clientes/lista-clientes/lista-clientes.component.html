@@ -40,4 +40,43 @@
       <tr mat-row *matRowDef="let row; columns:['nome', 'cpf', 'email', 'ativo', 'acao']"></tr>
     </table>
   </section>
+
+  <section>
+    <h2>Pessoas Jurídicas</h2>
+    <table mat-table [dataSource]="clientesPJ">
+      <ng-container matColumnDef="razaoSocial">
+        <th mat-header-cell *matHeaderCellDef>Razão Social</th>
+        <td mat-cell *matCellDef="let cliente">{{cliente.razaoSocial}}</td>
+      </ng-container>
+      <ng-container matColumnDef="cnpj">
+        <th mat-header-cell *matHeaderCellDef>CNPJ</th>
+        <td mat-cell *matCellDef="let cliente">{{cliente.cpfCnpj}}</td>
+      </ng-container>
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef>E-mail</th>
+        <td mat-cell *matCellDef="let cliente">{{cliente.email}}</td>
+      </ng-container>
+      <ng-container matColumnDef="ativo">
+        <th mat-header-cell *matHeaderCellDef>Status</th>
+        <td mat-cell *matCellDef="let cliente">{{cliente.ativo}}</td>
+      </ng-container>
+      <ng-container matColumnDef="acao">
+        <th mat-header-cell *matHeaderCellDef>Ações</th>
+        <td mat-cell *matCellDef="let cliente">
+          <button mat-icon-button [routerLink]="['/clientes', cliente.id]">
+            <mat-icon aria-hidden="false" aria-label="Visualizar detalhes do cliente">visibility</mat-icon>
+          </button>
+          <button mat-icon-button >
+            <mat-icon aria-hidden="false" aria-label="Editar cliente">edit</mat-icon>
+          </button>
+          <button mat-icon-button (click)="deletarCliente(cliente.id)">
+            <mat-icon aria-hidden="false" aria-label="Excluir cliente">delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="['razaoSocial', 'cnpj', 'email', 'ativo', 'acao']"></tr>
+      <tr mat-row *matRowDef="let row; columns:['razaoSocial', 'cnpj', 'email', 'ativo', 'acao']"></tr>
+    </table>
+  </section>
 </div>

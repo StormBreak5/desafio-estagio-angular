@@ -1,6 +1,7 @@
 /*estilização global para "resetar" os estilos padrões. Fonte: https://www.joshwcomeau.com/css/custom-css-reset/
 /* 1. Use a more-intuitive box-sizing model */
 *, *::before, *::after {
+  font-family: 'Poppins', sans-serif;
   box-sizing: border-box;
 }
 
@@ -45,4 +46,17 @@ h1, h2, h3, h4, h5, h6 {
 */
 #root, #__next {
   isolation: isolate;
+}
+
+.mat-table {
+  width: 100%;
+}
+
+.mat-card {
+  margin-bottom: 1rem;
+}
+
+.mat-form-field {
+  width: 100%;
+  margin-bottom: 1rem;
 }

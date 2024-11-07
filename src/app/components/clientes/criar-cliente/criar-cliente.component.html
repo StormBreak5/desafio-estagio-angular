@@ -1,60 +1,51 @@
 <div class="container">
-  <h1 wicket:id="titulo">[titulo]</h1>
+  <h1>Novo Cliente</h1>
 
-  <div class="form-container">
-    <form class="client-form" >
-      <div class="input-container">
-        <label>Selecione o tipo de pessoa</label>
-        <select>
-          <option>[primeira]</option>
-          <option>[segunda]</option>
-        </select>
-      </div>
-      <div class="gapper">
-        <div class="input-container">
-          <label>Nome</label>
-          <input type="text" placeholder="Nome" required/>
-        </div>
-        <div class="input-container">
-          <label>CPF</label>
-          <input type="text" placeholder="CPF" required/>
-        </div>
-        <div class="input-container">
-          <label>RG</label>
-          <input type="text" placeholder="RG" required/>
-        </div>
-        <div class="input-container">
-          <label>Data de Nascimento</label>
-          <input type="date" required/>
-        </div>
-        <div class="input-container">
-          <label>E-mail</label>
-          <input type="text" placeholder="E-mail" required/>
-        </div>
-      </div>
-      <div class="gapper">
-        <div class="input-container">
-          <label>Razão Social</label>
-          <input type="text"  placeholder="Razão Social" required />
-        </div>
-        <div class="input-container">
-          <label>CNPJ</label>
-          <input type="text" placeholder="CNPJ" required/>
-        </div>
-        <div class="input-container">
-          <label>Inscrição Estadual</label>
-          <input type="text" placeholder="Inscrição Estadual" required/>
-        </div>
-        <div class="input-container">
-          <label>Data de Criação</label>
-          <input type="date" placeholder="Data de Criação" required/>
-        </div>
-        <div class="input-container">
-          <label>E-mail</label>
-          <input type="text" placeholder="E-mail" required/>
-        </div>
-      </div>
-      <button type="submit" name="submit">Cadastrar</button>
-    </form>
-  </div>
+  <form [formGroup]="formCliente" (ngSubmit)="onSubmit()">
+    <mat-form-field>
+      <mat-label>Tipo de Pessoa</mat-label>
+      <mat-select formControlName="tipoPessoa">
+        <mat-option [value]="tipoPessoa.FISICA">Física</mat-option>
+        <mat-option [value]="tipoPessoa.JURIDICA">Jurídica</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <ng-container *ngIf="formCliente.get('tipoPessoa')?.value === tipoPessoa.FISICA">
+      <mat-form-field>
+        <input matInput placeholder="Nome" formControlName="nome" required>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="CPF" formControlName="cpfCnpj" required>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="RG" formControlName="rg" required>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput type="date" placeholder="Data de Nascimento" formControlName="dataNascimento" required>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="E-mail" formControlName="email" required>
+      </mat-form-field>
+    </ng-container>
+
+    <ng-container *ngIf="formCliente.get('tipoPessoa')?.value === tipoPessoa.JURIDICA">
+      <mat-form-field>
+        <input matInput placeholder="Razão Social" formControlName="razaoSocial" required>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="CNPJ" formControlName="cpfCnpj" required>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Inscrição Estadual" formControlName="inscricaoEstadual" required>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput type="date" placeholder="Data de Criação" formControlName="dataCriacao" required>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="E-mail" formControlName="email" required>
+      </mat-form-field>
+    </ng-container>
+
+    <button mat-raised-button color="primary" type="submit" [disabled]="!formCliente.valid">Criar Cliente</button>
+  </form>
 </div>
