@@ -30,7 +30,7 @@ export class ListaClientesComponent implements OnInit {
   }
 
   deletarCliente(cliente: Cliente): void {
-    if(confirm('Tem certeza que deseja excluir este endereço?')) {
+    if(confirm('Tem certeza que deseja excluir este cliente?')) {
       this.clienteService.deletaCliente(cliente.id!).subscribe(() => {
         this.carregaClientes();
       });

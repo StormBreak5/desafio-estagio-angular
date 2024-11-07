@@ -3,6 +3,7 @@ import {Cliente} from "../../../models/cliente";
 import {ActivatedRoute} from "@angular/router";
 import {ClientService} from "../../../services/client.service";
 import {MatDialog} from "@angular/material/dialog";
+import {Endereco} from "../../../models/endereco";
 
 @Component({
   selector: 'app-detalhes-cliente',
@@ -27,6 +28,18 @@ export class DetalhesClienteComponent implements OnInit {
     this.clienteService.getClienteById(id).subscribe(cliente => {
       this.cliente = cliente;
     })
+  }
+
+  adicionaEndereco(): void {}
+
+  editaEndereco(idEndereco: Endereco): void {}
+
+  deletarEndereco(endereco: Endereco): void {
+    if(confirm('Tem certeza que deseja excluir este endereço?')) {
+      this.clienteService.deletaEndereco(this.cliente.id!, endereco.id!).subscribe(() => {
+        this.carregaCliente(this.cliente.id!);
+      })
+    }
   }
 
 }

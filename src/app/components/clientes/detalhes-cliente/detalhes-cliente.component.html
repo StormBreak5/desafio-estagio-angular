@@ -1,1 +1,37 @@
-<p>detalhes-cliente works!</p>
+<div class="container" *ngIf="cliente" >
+  <h1>Detalhes do Cliente</h1>
+
+  <mat-card>
+    <mat-card-content>
+      <h2>{{cliente.tipoPessoa === 'FISICA' ? cliente.nome : cliente.razaoSocial}}</h2>
+      <p><strong>{{ cliente.tipoPessoa === 'FISICA' ? 'CPF' : 'CNPJ' }}: </strong>{{cliente.cpfCnpj}}</p>
+      <p><strong>{{ cliente.tipoPessoa === 'FISICA' ? 'RG' : 'Inscrição Estadual' }}: </strong>{{cliente.tipoPessoa === 'FISICA' ? cliente.rg : cliente.inscEstadual }}</p>
+      <p><strong>{{ cliente.tipoPessoa === 'FISICA' ?
+        'Data de Nascimento' :
+        'Data de Criação' }}: </strong>{{ cliente.tipoPessoa === 'FISICA' ?
+                                            cliente.dataNascimento :
+                                            cliente.dataCriacao}}</p>
+      <p><strong>E-mail: </strong>{{cliente.email}}</p>
+      <p><strong>Status: </strong>{{cliente.ativo ? 'Ativo' : 'Inativo'}}</p>
+    </mat-card-content>
+  </mat-card>
+
+  <h2>Endereços</h2>
+  <button mat-raised-button color="primary" (click)="adicionaEndereco()">Adicionar Endereço</button>
+
+  <mat-list>
+    <mat-list-item *ngFor="let endereco of cliente.enderecos">
+      <h3 matLine>{{endereco.logradouro}}, {{endereco.numero}}</h3>
+      <p matLine>{{endereco.bairro}}, {{endereco.cidade}} - {{endereco.uf}}</p>
+      <p matLine>{{endereco.cep}}</p>
+      <p matLine *ngIf="endereco.telefone">{{endereco.telefone}}</p>
+      <p matLine>Principal: {{endereco.enderecoPrincipal ? 'Sim' : 'Não'}}</p>
+      <button mat-icon-button (click)="editaEndereco(endereco)">
+        <mat-icon>edit</mat-icon>
+      </button>
+      <button mat-icon-button (click)="deletarEndereco(endereco)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </mat-list-item>
+  </mat-list>
+</div>
