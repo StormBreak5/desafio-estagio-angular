@@ -20,7 +20,10 @@ import {MatCheckboxModule} from "@angular/material/checkbox";
 import {MatSelectModule} from "@angular/material/select";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {HttpClientModule} from "@angular/common/http";
+import { EditaClienteModalComponent } from './components/clientes/edita-cliente-modal/edita-cliente-modal.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {MatSliderModule} from "@angular/material/slider";
+
 
 const routes: Routes = [
   {path: '', redirectTo: '/clientes', pathMatch: 'full'},
@@ -36,7 +39,8 @@ const routes: Routes = [
     CriarClienteComponent,
     ListaClientesComponent,
     DetalhesClienteComponent,
-    CriaEnderecoComponent
+    CriaEnderecoComponent,
+    EditaClienteModalComponent
   ],
   imports: [
     BrowserModule,
@@ -54,7 +58,9 @@ const routes: Routes = [
     RouterOutlet,
     MatProgressSpinnerModule,
     RouterModule.forRoot(routes),
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatSliderModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

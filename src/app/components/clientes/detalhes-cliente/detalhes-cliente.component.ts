@@ -34,6 +34,7 @@ export class DetalhesClienteComponent implements OnInit {
   adicionaEndereco(): void {
     const dialogRef = this.dialog.open(CriaEnderecoComponent, {
       width: '600px',
+      height: 'auto',
       data: {}
     });
 

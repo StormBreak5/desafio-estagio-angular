@@ -19,19 +19,21 @@
   <h2>Endereços</h2>
   <button mat-raised-button color="primary" (click)="adicionaEndereco()">Adicionar Endereço</button>
 
-  <mat-list>
-    <mat-list-item *ngFor="let endereco of cliente.enderecos">
-      <h3 matLine>{{endereco.logradouro}}, {{endereco.numero}}</h3>
-      <p matLine>{{endereco.bairro}}, {{endereco.cidade}} - {{endereco.uf}}</p>
-      <p matLine>{{endereco.cep}}</p>
-      <p matLine *ngIf="endereco.telefone">{{endereco.telefone}}</p>
-      <p matLine>Principal: {{endereco.enderecoPrincipal ? 'Sim' : 'Não'}}</p>
-      <button mat-icon-button (click)="editaEndereco(endereco)">
-        <mat-icon>edit</mat-icon>
-      </button>
-      <button mat-icon-button (click)="deletarEndereco(endereco)">
-        <mat-icon>delete</mat-icon>
-      </button>
-    </mat-list-item>
-  </mat-list>
+  <div class="endereco-container">
+    <mat-list>
+      <mat-list-item *ngFor="let endereco of cliente.enderecos">
+        <h3 matLine>{{endereco.logradouro}}, {{endereco.numero}}</h3>
+        <p matLine>{{endereco.bairro}}, {{endereco.cidade}} - {{endereco.uf}}</p>
+        <p matLine>{{endereco.cep}}</p>
+        <p matLine *ngIf="endereco.telefone">{{endereco.telefone}}</p>
+        <p matLine>Principal: {{endereco.enderecoPrincipal ? 'Sim' : 'Não'}}</p>
+        <button mat-icon-button (click)="editaEndereco(endereco)">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button (click)="deletarEndereco(endereco)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </mat-list-item>
+    </mat-list>
+  </div>
 </div>

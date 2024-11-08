@@ -55,7 +55,10 @@ export class ClientService {
   atualizaCliente(cliente: Cliente): Observable<Cliente> {
     this.appState.setLoading(true);
     return this.http.put<Cliente>(`${this.apiUrl}/${cliente.id}`, cliente).pipe(
-      catchError(this.handleError.bind(this)),
+      catchError(error => {
+        this.appState.setError('Erro ao atualizar cliente');
+        return throwError(error);
+      }),
       finalize(() => this.appState.setLoading(false))
     );
   }

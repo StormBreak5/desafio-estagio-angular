@@ -27,11 +27,11 @@
           <button mat-icon-button [routerLink]="['/clientes', cliente.id]">
             <mat-icon>visibility</mat-icon>
           </button>
-          <button mat-icon-button >
-            <mat-icon>edit</mat-icon>
+          <button mat-icon-button (click)="editarCliente(cliente)">
+            <mat-icon aria-hidden="false" aria-label="Editar cliente">edit</mat-icon>
           </button>
-          <button mat-icon-button >
-            <mat-icon>delete</mat-icon>
+          <button mat-icon-button (click)="deletarCliente(cliente)">
+            <mat-icon aria-hidden="false" aria-label="Excluir cliente">delete</mat-icon>
           </button>
         </td>
       </ng-container>
@@ -66,10 +66,10 @@
           <button mat-icon-button [routerLink]="['/clientes', cliente.id]">
             <mat-icon aria-hidden="false" aria-label="Visualizar detalhes do cliente">visibility</mat-icon>
           </button>
-          <button mat-icon-button >
+          <button mat-icon-button (click)="editarCliente(cliente)">
             <mat-icon aria-hidden="false" aria-label="Editar cliente">edit</mat-icon>
           </button>
-          <button mat-icon-button (click)="deletarCliente(cliente.id)">
+          <button mat-icon-button (click)="deletarCliente(cliente)">
             <mat-icon aria-hidden="false" aria-label="Excluir cliente">delete</mat-icon>
           </button>
         </td>

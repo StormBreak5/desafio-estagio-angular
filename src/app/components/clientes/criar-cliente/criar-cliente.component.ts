@@ -22,7 +22,7 @@ export class CriarClienteComponent {
     this.formCliente = this.formBuilder.group({
       tipoPessoa: [TipoPessoa.FISICA, Validators.required],
       cpfCnpj: ['', Validators.required],
-      email: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
       nome:[''],
       razaoSocial:[''],
       rg: [''],
