@@ -50,6 +50,7 @@ export class DetalhesClienteComponent implements OnInit {
   editaEndereco(endereco: Endereco): void {
     const dialogRef = this.dialog.open(CriaEnderecoComponent, {
       width: '600px',
+      height: 'auto',
       data: {
         endereco
       }
