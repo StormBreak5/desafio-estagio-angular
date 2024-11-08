@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
 import { AppStateService } from "./services/app-state.service";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  animations: [BrowserAnimationsModule]
 })
 export class AppComponent {
   title = 'unika-angular';

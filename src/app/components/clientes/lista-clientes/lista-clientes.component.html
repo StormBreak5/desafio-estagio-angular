@@ -19,7 +19,7 @@
       </ng-container>
       <ng-container matColumnDef="ativo">
         <th mat-header-cell *matHeaderCellDef>Status</th>
-        <td mat-cell *matCellDef="let cliente">{{cliente.ativo}}</td>
+        <td mat-cell *matCellDef="let cliente">{{cliente.ativo ? 'Ativo' : 'Inativo'}}</td>
       </ng-container>
       <ng-container matColumnDef="acao">
         <th mat-header-cell *matHeaderCellDef>Ações</th>
@@ -58,7 +58,7 @@
       </ng-container>
       <ng-container matColumnDef="ativo">
         <th mat-header-cell *matHeaderCellDef>Status</th>
-        <td mat-cell *matCellDef="let cliente">{{cliente.ativo}}</td>
+        <td mat-cell *matCellDef="let cliente">{{cliente.ativo ? 'Ativo' : 'Inativo'}}</td>
       </ng-container>
       <ng-container matColumnDef="acao">
         <th mat-header-cell *matHeaderCellDef>Ações</th>
