@@ -40,10 +40,9 @@
       <tr mat-row *matRowDef="let row; columns:['nome', 'cpf', 'email', 'ativo', 'acao']"></tr>
     </table>
     <div class="export-container">
-      <a href=""></a>
-      <a></a>
+      <button mat-raised-button color="primary" (click)="exportaClientesPFPDF()">Exportar em PDF</button>
+      <button mat-raised-button color="primary" (click)="exportaClientesPFExcel()">Exportar em XLSX</button>
     </div>
-    <a></a>
   </section>
 
   <section>
@@ -83,5 +82,9 @@
       <tr mat-header-row *matHeaderRowDef="['razaoSocial', 'cnpj', 'email', 'ativo', 'acao']"></tr>
       <tr mat-row *matRowDef="let row; columns:['razaoSocial', 'cnpj', 'email', 'ativo', 'acao']"></tr>
     </table>
+    <div class="export-container">
+      <button mat-raised-button color="primary" (click)="exportaClientesPJPDF()">Exportar em PDF</button>
+      <button mat-raised-button color="primary" (click)="exportaClientesPJExcel()">Exportar em XLSX</button>
+    </div>
   </section>
 </div>

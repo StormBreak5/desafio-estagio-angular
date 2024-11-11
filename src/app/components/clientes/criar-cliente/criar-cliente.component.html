@@ -12,40 +12,40 @@
 
     <ng-container *ngIf="formCliente.get('tipoPessoa')?.value === tipoPessoa.FISICA">
       <mat-form-field>
-        <input matInput placeholder="Nome" formControlName="nome" required>
+        <input matInput placeholder="Nome" formControlName="nome">
       </mat-form-field>
       <mat-form-field>
-        <input matInput placeholder="CPF" mask="000.000.000-00" formControlName="cpfCnpj" required>
+        <input matInput placeholder="CPF" mask="000.000.000-00" formControlName="cpfCnpj">
       </mat-form-field>
       <mat-form-field>
-        <input matInput placeholder="RG" formControlName="rg" required>
+        <input matInput placeholder="RG" formControlName="rg">
       </mat-form-field>
       <mat-form-field>
-        <input matInput type="date" placeholder="Data de Nascimento" formControlName="dataNascimento" required>
+        <input matInput type="date" placeholder="Data de Nascimento" formControlName="dataNascimento">
       </mat-form-field>
       <mat-form-field>
-        <input matInput placeholder="E-mail" formControlName="email" required>
+        <input matInput placeholder="E-mail" formControlName="email">
       </mat-form-field>
     </ng-container>
 
     <ng-container *ngIf="formCliente.get('tipoPessoa')?.value === tipoPessoa.JURIDICA">
       <mat-form-field>
-        <input matInput placeholder="Razão Social" formControlName="razaoSocial" required>
+        <input matInput placeholder="Razão Social" formControlName="razaoSocial" >
       </mat-form-field>
       <mat-form-field>
-        <input matInput placeholder="CNPJ" mask="00.000.000/0000-00" formControlName="cpfCnpj" required>
+        <input matInput placeholder="CNPJ" mask="00.000.000/0000-00" formControlName="cpfCnpj" >
       </mat-form-field>
       <mat-form-field>
-        <input matInput placeholder="Inscrição Estadual" formControlName="inscricaoEstadual" required>
+        <input matInput placeholder="Inscrição Estadual" formControlName="inscricaoEstadual" >
       </mat-form-field>
       <mat-form-field>
-        <input matInput type="date" placeholder="Data de Criação" formControlName="dataCriacao" required>
+        <input matInput type="date" placeholder="Data de Criação" formControlName="dataCriacao" >
       </mat-form-field>
       <mat-form-field>
-        <input matInput placeholder="E-mail" formControlName="email" required>
+        <input matInput placeholder="E-mail" formControlName="email">
       </mat-form-field>
     </ng-container>
 
-    <button mat-raised-button color="primary" type="submit" [disabled]="!formCliente.valid">Criar Cliente</button>
+    <button class="submit-btn" mat-raised-button color="primary" type="submit" [disabled]="!formCliente.valid">Criar Cliente</button>
   </form>
 </div>

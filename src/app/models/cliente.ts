@@ -13,7 +13,7 @@ export interface Cliente {
   dataNascimento?: Date;
 
   razaoSocial?: string;
-  inscEstadual?: string;
+  inscricaoEstadual?: string;
   dataCriacao?: Date;
 
   enderecos?: Endereco[];

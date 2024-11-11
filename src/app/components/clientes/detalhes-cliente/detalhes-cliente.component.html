@@ -6,7 +6,7 @@
       <h2>{{cliente.tipoPessoa === 'FISICA' ? cliente.nome : cliente.razaoSocial}}</h2>
       <p><strong>{{ cliente.tipoPessoa === 'FISICA' ? 'CPF' : 'CNPJ' }}: </strong>
         {{cliente.tipoPessoa === 'FISICA' ? (cliente.cpfCnpj | mask : '000.000.000-00') : (cliente.cpfCnpj | mask: '00.000.000/0000-00')}}</p>
-      <p><strong>{{ cliente.tipoPessoa === 'FISICA' ? 'RG' : 'Inscrição Estadual' }}: </strong>{{cliente.tipoPessoa === 'FISICA' ? cliente.rg : cliente.inscEstadual }}</p>
+      <p><strong>{{ cliente.tipoPessoa === 'FISICA' ? 'RG' : 'Inscrição Estadual' }}: </strong>{{cliente.tipoPessoa === 'FISICA' ? cliente.rg : cliente.inscricaoEstadual }}</p>
       <p><strong>{{ cliente.tipoPessoa === 'FISICA' ?
         'Data de Nascimento' :
         'Data de Criação' }}: </strong>{{ cliente.tipoPessoa === 'FISICA' ?

@@ -4,6 +4,7 @@ import {ClientService} from "../../../services/client.service";
 import {MatDialog} from "@angular/material/dialog";
 import {TipoPessoa} from "../../../models/enum/tipo-pessoa";
 import {EditaClienteModalComponent} from "../edita-cliente-modal/edita-cliente-modal.component";
+import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'app-lista-clientes',
@@ -17,6 +18,7 @@ export class ListaClientesComponent implements OnInit {
   constructor(
     private clienteService: ClientService,
     private dialog: MatDialog,
+    private http: HttpClient
   ) { }
 
   ngOnInit(): void {
@@ -44,6 +46,62 @@ export class ListaClientesComponent implements OnInit {
         this.carregaClientes();
       }
     })
+  }
+
+  exportaClientesPFPDF(): void {
+    this.http.get('http://localhost:8081/relatorios/clientes/pdf', {responseType: 'blob'}).subscribe(result => {
+      const url = window.URL.createObjectURL(result);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'clientesPF.pdf';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    }, error => {
+      console.error('Erro ao exportar clientes: ', error);
+    });
+  }
+
+  exportaClientesPJPDF(): void {
+    this.http.get('http://localhost:8081/relatorios/clientes/pdfPJ', {responseType: 'blob'}).subscribe(result => {
+      const url = window.URL.createObjectURL(result);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'clientesPJ.pdf';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    }, error => {
+      console.error('Erro ao exportar clientes: ', error);
+    });
+  }
+
+  exportaClientesPFExcel(): void {
+    this.http.get('http://localhost:8081/relatorios/clientes/excel', {responseType: 'blob'}).subscribe(result => {
+      const url = window.URL.createObjectURL(result);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'clientesPF.xlsx';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    }, error => {
+      console.error('Erro ao exportar clientes: ', error);
+    });
+  }
+
+  exportaClientesPJExcel(): void {
+    this.http.get('http://localhost:8081/relatorios/clientes/excelPJ', {responseType: 'blob'}).subscribe(result => {
+      const url = window.URL.createObjectURL(result);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'clientesPJ.xlsx';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    }, error => {
+      console.error('Erro ao exportar clientes: ', error);
+    });
   }
 
   deletarCliente(cliente: Cliente): void {

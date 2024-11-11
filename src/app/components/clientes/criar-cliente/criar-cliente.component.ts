@@ -20,15 +20,16 @@ export class CriarClienteComponent {
     private router: Router
   ) {
     this.formCliente = this.formBuilder.group({
-      tipoPessoa: [TipoPessoa.FISICA, Validators.required],
+      tipoPessoa: [TipoPessoa.FISICA],
       cpfCnpj: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       nome:[''],
       razaoSocial:[''],
       rg: [''],
       inscricaoEstadual: [''],
-      dataNascimento: [null as Date | null],
-      dataCriacao:[null as Date | null]
+      dataNascimento: [null],
+      dataCriacao:[null],
+      ativo: true
     });
 
     this.formCliente.get('tipoPessoa')?.valueChanges.subscribe(value => {
@@ -41,6 +42,9 @@ export class CriarClienteComponent {
       this.formCliente.get('nome')?.setValidators(Validators.required);
       this.formCliente.get('rg')?.setValidators(Validators.required);
       this.formCliente.get('dataNascimento')?.setValidators(Validators.required);
+      this.formCliente.get('cpfCnpj')?.setValidators(Validators.required);
+      this.formCliente.get('email')?.setValidators(Validators.required);
+      this.formCliente.get('tipoPessoa')?.setValidators(Validators.required);
       this.formCliente.get('razaoSocial')?.clearValidators();
       this.formCliente.get('inscricaoEstadual')?.clearValidators();
       this.formCliente.get('dataCriacao')?.clearValidators();
@@ -48,6 +52,9 @@ export class CriarClienteComponent {
       this.formCliente.get('nome')?.clearValidators();
       this.formCliente.get('rg')?.clearValidators();
       this.formCliente.get('dataNascimento')?.clearValidators();
+      this.formCliente.get('cpfCnpj')?.setValidators(Validators.required);
+      this.formCliente.get('email')?.setValidators(Validators.required);
+      this.formCliente.get('tipoPessoa')?.setValidators(Validators.required);
       this.formCliente.get('razaoSocial')?.setValidators(Validators.required);
       this.formCliente.get('inscricaoEstadual')?.setValidators(Validators.required);
       this.formCliente.get('dataCriacao')?.setValidators(Validators.required);
