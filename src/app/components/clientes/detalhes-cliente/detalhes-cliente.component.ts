@@ -58,7 +58,7 @@ export class DetalhesClienteComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if(result) {
-        this.clienteService.atualizaEndereco(this.cliente.id!, {...result, id: endereco.id}).subscribe(() => {
+        this.clienteService.atualizaEndereco(this.cliente.id!, {...result, idEndereco: endereco.idEndereco}).subscribe(() => {
           this.carregaCliente(this.cliente.id!);
         });
       }
@@ -67,7 +67,7 @@ export class DetalhesClienteComponent implements OnInit {
 
   deletarEndereco(endereco: Endereco): void {
     if(confirm('Tem certeza que deseja excluir este endereço?')) {
-      this.clienteService.deletaEndereco(this.cliente.id!, endereco.id!).subscribe(() => {
+      this.clienteService.deletaEndereco(this.cliente.id!, endereco.idEndereco!).subscribe(() => {
         this.carregaCliente(this.cliente.id!);
       })
     }

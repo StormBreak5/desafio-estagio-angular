@@ -1,5 +1,5 @@
 export interface Endereco {
-    id?: number;
+    idEndereco?: number;
     logradouro: string;
     numero?: string;
     cep: string;

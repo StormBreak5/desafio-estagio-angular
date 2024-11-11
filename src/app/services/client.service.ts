@@ -81,7 +81,7 @@ export class ClientService {
 
   atualizaEndereco(idCliente: number, endereco: Endereco): Observable<Endereco> {
     this.appState.setLoading(true);
-    return this.http.put<Endereco>(`${this.apiUrl}/${idCliente}/enderecos/${endereco.id}`, endereco).pipe(
+    return this.http.put<Endereco>(`${this.apiUrl}/${idCliente}/enderecos/${endereco.idEndereco}`, endereco).pipe(
       catchError(this.handleError.bind(this)),
       finalize(() => this.appState.setLoading(false))
     );
