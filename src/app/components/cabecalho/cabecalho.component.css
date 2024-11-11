@@ -1,3 +1,7 @@
+header {
+  height: 70px;
+}
+
 .centralizer {
   display: flex;
   max-width: 1200px;

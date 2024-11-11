@@ -23,6 +23,7 @@ import {HttpClientModule} from "@angular/common/http";
 import { EditaClienteModalComponent } from './components/clientes/edita-cliente-modal/edita-cliente-modal.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {MatSliderModule} from "@angular/material/slider";
+import {NgxMaskModule} from "ngx-mask";
 
 
 const routes: Routes = [
@@ -42,26 +43,27 @@ const routes: Routes = [
     CriaEnderecoComponent,
     EditaClienteModalComponent
   ],
-  imports: [
-    BrowserModule,
-    MatTableModule,
-    MatButtonModule,
-    MatIconModule,
-    RouterLink,
-    MatCardModule,
-    MatListModule,
-    MatDialogModule,
-    ReactiveFormsModule,
-    MatInputModule,
-    MatCheckboxModule,
-    MatSelectModule,
-    RouterOutlet,
-    MatProgressSpinnerModule,
-    RouterModule.forRoot(routes),
-    HttpClientModule,
-    BrowserAnimationsModule,
-    MatSliderModule,
-  ],
+    imports: [
+        BrowserModule,
+        MatTableModule,
+        MatButtonModule,
+        MatIconModule,
+        RouterLink,
+        MatCardModule,
+        MatListModule,
+        MatDialogModule,
+        ReactiveFormsModule,
+        MatInputModule,
+        MatCheckboxModule,
+        MatSelectModule,
+        RouterOutlet,
+        MatProgressSpinnerModule,
+        RouterModule.forRoot(routes),
+        HttpClientModule,
+        BrowserAnimationsModule,
+        MatSliderModule,
+        NgxMaskModule.forRoot(),
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
