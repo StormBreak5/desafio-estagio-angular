@@ -1,5 +1,5 @@
 import {Component, ViewChild} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {AbstractControl, FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {TipoPessoa} from "../../../models/enum/tipo-pessoa";
 import {ClientService} from "../../../services/client.service";
 import {Router} from "@angular/router";
@@ -21,7 +21,7 @@ export class CriarClienteComponent {
   ) {
     this.formCliente = this.formBuilder.group({
       tipoPessoa: [TipoPessoa.FISICA],
-      cpfCnpj: ['', Validators.required],
+      cpfCnpj: ['', [Validators.required, this.validaCPFCNPJ]],
       email: ['', [Validators.required, Validators.email]],
       nome:[''],
       razaoSocial:[''],
@@ -73,6 +73,20 @@ export class CriarClienteComponent {
           console.error('Erro ao criar cliente: ', error);
         }
       );
+    } else {
+      this.formCliente.markAllAsTouched();
     }
+  }
+
+  validaCPFCNPJ(control: AbstractControl): {[key: string]: boolean} | null {
+    const value = control.value;
+
+    if(!value) {
+      return null;
+    }
+
+    const valido = '([0-9]{2}[\\.]?[0-9]{3}[\\.]?[0-9]{3}[\\/]?[0-9]{4}[-]?[0-9]{2})|([0-9]{3}[\\.]?[0-9]{3}[\\.]?[0-9]{3}[-]?[0-9]{2})';
+
+    return valido ? null : {cpfCnpjInvalido: true};
   }
 }
