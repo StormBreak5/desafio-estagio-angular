@@ -1,10 +1,12 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {Cliente} from "../../../models/cliente";
 import {ClientService} from "../../../services/client.service";
 import {MatDialog} from "@angular/material/dialog";
 import {TipoPessoa} from "../../../models/enum/tipo-pessoa";
 import {EditaClienteModalComponent} from "../edita-cliente-modal/edita-cliente-modal.component";
 import {HttpClient} from "@angular/common/http";
+import {MatTableDataSource} from "@angular/material/table";
+import {MatSort} from "@angular/material/sort";
 
 @Component({
   selector: 'app-lista-clientes',
@@ -12,8 +14,11 @@ import {HttpClient} from "@angular/common/http";
   styleUrls: ['./lista-clientes.component.css']
 })
 export class ListaClientesComponent implements OnInit {
-  clientesPF: Cliente[] = [];
-  clientesPJ: Cliente[] = [];
+  clientesPF = new MatTableDataSource<Cliente>();
+  clientesPJ = new MatTableDataSource<Cliente>();
+  filterText: string = '';
+
+  @ViewChild(MatSort) sort!: MatSort;
 
   constructor(
     private clienteService: ClientService,
@@ -28,8 +33,10 @@ export class ListaClientesComponent implements OnInit {
   carregaClientes(): void {
     this.clienteService.getClientes().subscribe(clientes => {
       const clienteTratado = clientes.content;
-      this.clientesPF = clienteTratado.filter(c => c.tipoPessoa === TipoPessoa.FISICA);
-      this.clientesPJ = clienteTratado.filter(c => c.tipoPessoa === TipoPessoa.JURIDICA);
+      this.clientesPF.data = clienteTratado.filter(c => c.tipoPessoa === TipoPessoa.FISICA);
+      this.clientesPJ.data = clienteTratado.filter(c => c.tipoPessoa === TipoPessoa.JURIDICA);
+      this.clientesPF.sort = this.sort;
+      this.clientesPJ.sort = this.sort;
     })
   }
 
@@ -110,5 +117,15 @@ export class ListaClientesComponent implements OnInit {
         this.carregaClientes();
       });
     }
+  }
+
+  get filtroClientesPF(): Cliente[] {
+    this.clientesPF.filter = this.filterText.trim().toLowerCase();
+    return this.clientesPF.filteredData;
+  }
+
+  get filtroClientesPJ(): Cliente[] {
+    this.clientesPJ.filter = this.filterText.trim().toLowerCase();
+    return this.clientesPJ.filteredData;
   }
 }

@@ -14,7 +14,7 @@ import {MatCardModule} from "@angular/material/card";
 import {MatListModule} from "@angular/material/list";
 import { CriaEnderecoComponent } from './components/enderecos/cria-endereco/cria-endereco.component';
 import {MatDialogModule} from "@angular/material/dialog";
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatInputModule} from "@angular/material/input";
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import {MatSelectModule} from "@angular/material/select";
@@ -24,6 +24,7 @@ import { EditaClienteModalComponent } from './components/clientes/edita-cliente-
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {MatSliderModule} from "@angular/material/slider";
 import {NgxMaskModule} from "ngx-mask";
+import {MatSortModule} from "@angular/material/sort";
 
 
 const routes: Routes = [
@@ -43,27 +44,29 @@ const routes: Routes = [
     CriaEnderecoComponent,
     EditaClienteModalComponent
   ],
-    imports: [
-        BrowserModule,
-        MatTableModule,
-        MatButtonModule,
-        MatIconModule,
-        RouterLink,
-        MatCardModule,
-        MatListModule,
-        MatDialogModule,
-        ReactiveFormsModule,
-        MatInputModule,
-        MatCheckboxModule,
-        MatSelectModule,
-        RouterOutlet,
-        MatProgressSpinnerModule,
-        RouterModule.forRoot(routes),
-        HttpClientModule,
-        BrowserAnimationsModule,
-        MatSliderModule,
-        NgxMaskModule.forRoot(),
-    ],
+  imports: [
+    BrowserModule,
+    MatTableModule,
+    MatButtonModule,
+    MatIconModule,
+    RouterLink,
+    MatCardModule,
+    MatListModule,
+    MatDialogModule,
+    ReactiveFormsModule,
+    MatInputModule,
+    MatCheckboxModule,
+    MatSelectModule,
+    RouterOutlet,
+    MatProgressSpinnerModule,
+    RouterModule.forRoot(routes),
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatSliderModule,
+    NgxMaskModule.forRoot(),
+    MatSortModule,
+    FormsModule,
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })

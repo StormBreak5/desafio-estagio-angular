@@ -49,3 +49,16 @@ section {
 button {
   border-radius: 10px;
 }
+
+.filter {
+  border: 1px solid #ddd;
+  border-radius: 15px;
+
+  height: 2rem;
+  padding: 5px;
+  width: 50%;
+
+  text-align: center;
+
+  outline: none;
+}
