@@ -25,6 +25,7 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {MatSliderModule} from "@angular/material/slider";
 import {NgxMaskModule} from "ngx-mask";
 import {MatSortModule} from "@angular/material/sort";
+import { ImportarClientesComponent } from './components/clientes/importar-clientes/importar-clientes.component';
 
 
 const routes: Routes = [
@@ -42,7 +43,8 @@ const routes: Routes = [
     ListaClientesComponent,
     DetalhesClienteComponent,
     CriaEnderecoComponent,
-    EditaClienteModalComponent
+    EditaClienteModalComponent,
+    ImportarClientesComponent
   ],
   imports: [
     BrowserModule,

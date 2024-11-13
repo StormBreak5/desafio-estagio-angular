@@ -10,11 +10,11 @@ export interface Cliente {
 
   nome?: string;
   rg?: string;
-  dataNascimento?: Date;
+  dataNascimento?: Date | null;
 
   razaoSocial?: string;
   inscricaoEstadual?: string;
-  dataCriacao?: Date;
+  dataCriacao?: Date | null;
 
   enderecos?: Endereco[];
 }
