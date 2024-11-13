@@ -1,0 +1,46 @@
+<h1 mat-dialog-title>Editar Cliente</h1>
+<div mat-dialog-content>
+  <form [formGroup]="clienteForm" (ngSubmit)="onSubmit()">
+    <ng-container *ngIf="clienteForm.get('tipoPessoa')?.value === tipoPessoa.FISICA">
+      <mat-form-field>
+        <input matInput placeholder="Nome" formControlName="nome" required>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="CPF" mask="000.000.000-00" formControlName="cpfCnpj" required>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="RG" formControlName="rg" required>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput type="date" placeholder="Data de Nascimento" formControlName="dataNascimento" required>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="E-mail" formControlName="email" required>
+      </mat-form-field>
+    </ng-container>
+    <ng-container *ngIf="clienteForm.get('tipoPessoa')?.value === tipoPessoa.JURIDICA">
+      <mat-form-field>
+        <input matInput placeholder="Razão Social" formControlName="razaoSocial" required>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="CNPJ" mask="00.000.000/0000-00" formControlName="cpfCnpj" required>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Inscrição Estadual" formControlName="inscricaoEstadual" required>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput type="date" placeholder="Data de Criação" formControlName="dataCriacao" required>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="E-mail" formControlName="email" required>
+      </mat-form-field>
+    </ng-container>
+  </form>
+  <button mat-button (click)="mudaAtivo()" [ngStyle]="{'background-color': data.ativo ? '#38cb82' : '#FF474C', 'color': 'white'}">
+    {{data.ativo ? 'Desativar' : 'Ativar'}}
+  </button>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onCancel()">Cancelar</button>
+  <button mat-raised-button color="primary" (click)="onSubmit()" [disabled]="!clienteForm.valid">Salvar</button>
+</div>
