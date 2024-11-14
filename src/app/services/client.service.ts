@@ -4,6 +4,7 @@ import {catchError, finalize, Observable, throwError} from "rxjs";
 import {Cliente} from "../models/cliente";
 import {Endereco} from "../models/endereco";
 import {AppStateService} from "./app-state.service";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,8 @@ export class ClientService {
 
   constructor(
     private http: HttpClient,
-    private appState: AppStateService
+    private appState: AppStateService,
+    private _snackBar: MatSnackBar
   ) { }
 
   private handleError(error: HttpErrorResponse) {
@@ -25,6 +27,7 @@ export class ClientService {
     }
 
     this.appState.setError(errorMessage);
+    this._snackBar.open(errorMessage, 'ok');
     return throwError(errorMessage);
   }
 
@@ -57,6 +60,7 @@ export class ClientService {
     return this.http.put<Cliente>(`${this.apiUrl}/${cliente.id}`, cliente).pipe(
       catchError(error => {
         this.appState.setError('Erro ao atualizar cliente');
+        this._snackBar.open(error.message, 'ok');
         return throwError(error);
       }),
       finalize(() => this.appState.setLoading(false))

@@ -26,6 +26,8 @@ import {MatSliderModule} from "@angular/material/slider";
 import {NgxMaskModule} from "ngx-mask";
 import {MatSortModule} from "@angular/material/sort";
 import { ImportarClientesComponent } from './components/clientes/importar-clientes/importar-clientes.component';
+import { ImportarClientesPjComponent } from './components/clientes/importar-clientes-pj/importar-clientes-pj.component';
+import {MatSnackBarModule} from "@angular/material/snack-bar";
 
 
 const routes: Routes = [
@@ -44,7 +46,8 @@ const routes: Routes = [
     DetalhesClienteComponent,
     CriaEnderecoComponent,
     EditaClienteModalComponent,
-    ImportarClientesComponent
+    ImportarClientesComponent,
+    ImportarClientesPjComponent
   ],
   imports: [
     BrowserModule,
@@ -68,6 +71,7 @@ const routes: Routes = [
     NgxMaskModule.forRoot(),
     MatSortModule,
     FormsModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

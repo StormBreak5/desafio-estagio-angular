@@ -20,7 +20,6 @@ export class EditaClienteModalComponent {
     public dialogRef: MatDialogRef<EditaClienteModalComponent>,
     @Inject(MAT_DIALOG_DATA) public data: Cliente,
   ) {
-    console.log(data);
     this.clienteForm = this.formBuilder.group({
       tipoPessoa: [data.tipoPessoa],
       cpfCnpj: [data.cpfCnpj, Validators.required],
